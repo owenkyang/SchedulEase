@@ -15,6 +15,7 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.0",
-    "googleapis": "^144.0.0"
+    "googleapis": "^144.0.0",
+    "pdf-parse": "^1.1.1"
   }
 }
