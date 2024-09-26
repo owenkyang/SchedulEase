@@ -5,8 +5,8 @@ import pdf from 'pdf-parse/lib/pdf-parse.js'
 const app = express();
 
 //app.use(express.static(path.resolve(__dirname, './frontend')))
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
+app.use(express.urlencoded({extended: true, limit: '50 mb'}))
+app.use(express.json({limit: '50 mb'}))
 
 app.post("/login", (req, res) => {
 
@@ -18,7 +18,8 @@ app.post("/api/pdf-parse", async (req, res) => {
         return res.status(400).json({success:false, msg: 'Please input a valid PDF'})
     }
     try{
-        const pdfText = await pdf(pdfData)
+        const binary = Buffer.from(pdfData, 'base64');
+        const pdfText = await pdf(binary)
         res.status(200).json({success: true, pdfText})
     }
     catch(error){
