@@ -4,13 +4,11 @@ import path from "path"
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, './frontend')))
+app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-app.get('/', (req, res) => {
-    res.json([{}])
-})
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./frontend", "index.html"))
+app.post("/api/pdf-parse", (req, res) => {
+    
 })
 
 app.listen(5000, () =>{
