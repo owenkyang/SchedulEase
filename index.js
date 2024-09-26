@@ -4,7 +4,7 @@ import path from "path"
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, './frontend')))
-
+app.use(express.json())
 app.get('/', (req, res) => {
     res.json([{}])
 })
