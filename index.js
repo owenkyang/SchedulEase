@@ -1,12 +1,16 @@
 import express from "express";
 import http from "http";
 import path from "path"
-import PdfParse from "pdf-parse";
+import pdf from 'pdf-parse/lib/pdf-parse.js'
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, './frontend')))
+//app.use(express.static(path.resolve(__dirname, './frontend')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+
+app.post("/login", (req, res) => {
+
+})
 
 app.post("/api/pdf-parse", async (req, res) => {
     const {pdfData} = req.body
@@ -14,8 +18,8 @@ app.post("/api/pdf-parse", async (req, res) => {
         return res.status(400).json({success:false, msg: 'Please input a valid PDF'})
     }
     try{
-        const pdfText = await PdfParse(pdfData)
-        res.status(200).json({success:true, data: pdfText})
+        const pdfText = await pdf(pdfData)
+        res.status(200).json({success: true, pdfText})
     }
     catch(error){
         res.status(500).json({success: false, msg: error.message})
