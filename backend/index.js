@@ -3,6 +3,7 @@ import http from "http";
 import path from "path"
 import pdf from 'pdf-parse/lib/pdf-parse.js'
 import calendarRouter from "./routes/calendar.js";
+import authRouter from "./routes/auth.js";
 const app = express();
 
 //app.use(express.static(path.resolve(__dirname, './frontend')))
