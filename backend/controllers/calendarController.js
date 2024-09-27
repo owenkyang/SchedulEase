@@ -2,7 +2,6 @@ import express from "express";
 import http from "http";
 import pdf from 'pdf-parse/lib/pdf-parse.js'
 import { GoogleApis } from "googleapis";
-
 const PdfParser = async (req, res) => {
     const {pdfData} = req.body
     if (!pdfData){
