@@ -3,12 +3,15 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
+        required: [true, 'username is required'],
+        maxlength: [30, 'username can not be more than 20 characters'],
+        trim: true,
         unique: true
     },
     name: {
         type: String,
-        required: true
+        trim: true,
+        required: [true, 'please input a name'],
     },
     password: {
         type: String,
