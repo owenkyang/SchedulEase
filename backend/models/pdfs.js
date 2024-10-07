@@ -13,10 +13,7 @@ const pdfSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    isGridFS: {
-        type: Boolean,
-        default: false
-    }
+    
 }, {timestamps: true})
 const pdfModel = mongoose.model("PDF", pdfSchema)
 export default pdfModel;
