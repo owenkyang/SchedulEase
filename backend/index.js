@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.js";
 import {connectDB} from "./db/connect.js";
 import notFound from "./middleware/notfound.js";
 import dotenv from 'dotenv';
+import serverError from "./errors/error.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json({limit: '50 mb'}))
 app.use('/api/auth', authRouter)
 app.use('/api/calendar', calendarRouter)
 app.use(notFound)
+app.use(serverError)
 await connectDB();
 let bucket;
 (() => {
