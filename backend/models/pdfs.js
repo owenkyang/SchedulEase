@@ -12,7 +12,7 @@ const pdfSchema = new mongoose.Schema({
     contentType: {
         type: String,
         required: true
-    },
+    }
     
 }, {timestamps: true})
 const pdfModel = mongoose.model("PDF", pdfSchema)
