@@ -8,10 +8,14 @@ import {connectDB} from "./db/connect.js";
 import notFound from "./middleware/notfound.js";
 import dotenv from 'dotenv';
 import serverError from "./errors/error.js";
+import mongoose from "mongoose";
+
 
 dotenv.config();
 
 const app = express();
+const __dirname = path.resolve()
+
 
 app.use(express.static(path.resolve(__dirname, './frontend/public')))
 app.use(express.urlencoded({extended: true, limit: '50 mb'}))
@@ -35,7 +39,7 @@ const port = process.env.PORT || 5000
 const start = async () => {
   try{
     await connectDB();
-    app.listen(port, (port) =>{
+    app.listen(port, () =>{
       console.log(`Server is running on port ${port}`)
     })
   }
