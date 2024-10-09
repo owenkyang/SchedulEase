@@ -15,7 +15,7 @@ const PdfParser = async (req, res) => {
         res.status(200).json({success: true, pdfText})
     }
     catch(error){
-        res.status(500).json({success: false, msg: error.message})
+        next(error);
     }
 }
 export default PdfParser
